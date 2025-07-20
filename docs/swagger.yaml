@@ -1,0 +1,103 @@
+basePath: /api/v1
+definitions:
+  rest.CategoryApiResponse:
+    properties:
+      created_at:
+        description: |-
+          The creation timestamp
+          example: 2024-06-01T12:00:00Z
+        type: string
+      description:
+        description: |-
+          The description of the category
+          example: Devices and gadgets
+        type: string
+      id:
+        description: |-
+          The unique identifier of the category
+          example: 123e4567-e89b-12d3-a456-426614174000
+        type: string
+      name:
+        description: |-
+          The name of the category
+          example: Electronics
+        type: string
+      parent_id:
+        description: |-
+          The parent category ID
+          example: 987e6543-e21b-12d3-a456-426614174111
+        type: string
+      status:
+        description: |-
+          The status of the category
+          example: active
+        type: string
+      updated_at:
+        description: |-
+          The last update timestamp
+          example: 2024-06-02T15:30:00Z
+        type: string
+    type: object
+  rest.CreateCategoryRequest:
+    properties:
+      description:
+        description: |-
+          Description of the category
+          required: false
+        type: string
+      name:
+        description: |-
+          Name of the category
+          required: true
+        type: string
+      parent_id:
+        description: |-
+          Parent category ID
+          required: false
+        type: string
+    type: object
+host: hendyla.com
+info:
+  contact:
+    email: hendyla@itti.digital
+    name: Hendyla Team
+    url: http://www.swagger.io/support
+  description: This is an api to manage item categories.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Hendyla Categories Api
+  version: "1.0"
+paths:
+  /api/v1/categories:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new category with the provided information.
+      parameters:
+      - description: Category to create
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/rest.CreateCategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/rest.CategoryApiResponse'
+        "400":
+          description: 'Example: {\"code\": \"Bad Request\", \"message\": \"Invalid
+            request body\"}'
+          schema: {}
+        "500":
+          description: 'Example: {\"code\": \"Internal Server Error\", \"message\":
+            \"Invalid request body\"}'
+          schema: {}
+      summary: Create a new category
+      tags:
+      - categories
+swagger: "2.0"

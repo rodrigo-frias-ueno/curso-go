@@ -12,6 +12,20 @@ import (
 	"github.com/ueno-tecnologia-org/go-core/pkg/web"
 )
 
+// @title Hendyla Categories Api
+// @version 1.0
+// @description This is an api to manage item categories.
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name   Hendyla Team
+// @contact.url    http://www.swagger.io/support
+// @contact.email  hendyla@itti.digital
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host hendyla.com
+// @BasePath /api/v1
 func main() {
 	initLogger()
 

@@ -20,7 +20,7 @@ func NewGetRepository(db *sqlx.DB) GetRepository {
 func (repo *GetRepository) GetCategory(ctx context.Context, categoryID string) (categories.Category, error) {
 	var model CategoryModel
 
-	err := repo.db.SelectContext(ctx, &model, "SELECT * FROM categories WHERE id = $1", categoryID)
+	err := repo.db.SelectContext(ctx, &model, "SELECT * FROM categories WHERE id = ?", categoryID)
 
 	if err != nil {
 		return categories.Category{}, err

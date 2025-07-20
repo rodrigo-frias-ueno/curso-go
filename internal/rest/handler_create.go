@@ -10,9 +10,20 @@ import (
 	"github.com/ueno-tecnologia-org/go-core/pkg/web"
 )
 
+// CreateCategory creates a new category.
+//
+// @Summary      Create a new category
+// @Description  Creates a new category with the provided information.
+// @Tags         categories
+// @Accept       json
+// @Produce      json
+// @Param        category  body      CreateCategoryRequest  true  "Category to create"
+// @Success      201       {object}  CategoryApiResponse
+// @Failure      400       {object}  error  "Example: {\"code\": \"Bad Request\", \"message\": \"Invalid request body\"}"
+// @Failure      500       {object}  error  "Example: {\"code\": \"Internal Server Error\", \"message\": \"Invalid request body\"}"
+// @Router       /api/v1/categories [post]
 func (h *Handler) CreateCategory(w http.ResponseWriter, r *http.Request) error {
 	var request CreateCategoryRequest
-
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
 		slog.ErrorContext(r.Context(), "Failed to decode request body", "error", err)
 
