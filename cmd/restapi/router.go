@@ -13,6 +13,10 @@ import (
 func buildRouter(db *sqlx.DB) *web.Router {
 	router := web.New()
 	router.Use(web.HeaderForwarder())
+
+	//telemetryClient := buildTelemetryClient()
+	//router.Use(web.Telemetry(telemetryClient))
+
 	initSwagger(router)
 
 	categoryHandler := buildCategoriesHandler(db)
